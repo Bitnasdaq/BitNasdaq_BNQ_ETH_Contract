@@ -11,10 +11,16 @@ No proxy is implemented in front of the contract.
 
 **Functional Requirements**
 
-This is a simple ERC20 and any user should be able to interact with it as he or she would do with any token.
+BNQ serves as an ERC20-based utility token within the BitNasdaq ecosystem. 
+
+It's designed to be user-friendly, allowing any user to interact with it just like they would with any native exchange-based token.
 
 BNQ has the following attributes:
+
 Name: Bitnasdaq
+
 Symbol: BNQ
+
 Decimals: 8
+
 Total Supply: 100B Tokens
