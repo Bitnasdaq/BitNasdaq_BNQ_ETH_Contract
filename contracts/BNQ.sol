@@ -198,7 +198,21 @@ contract BNQ {
      * - `from` must have a balance of at least `amount`.
      */
     
+function _transfer(address from, address to, uint256 amount) internal {
+        require(from != address(0), "transfer from the zero address");
+        require(to != address(0), "transfer to the zero address");
 
+        uint256 fromBalance = _balances[from];
+        require(fromBalance >= amount, "transfer amount exceeds balance");
+        unchecked {
+            _balances[from] = fromBalance - amount;
+            // Overflow not possible: the sum of all balances is capped by totalSupply, and the sum is preserved by
+            // decrementing then incrementing.
+            _balances[to] += amount;
+        }
+
+        emit Transfer(from, to, amount);
+    }
     /** @dev Creates `amount` tokens and assigns them to `account`, increasing
      * the total supply.
      *
