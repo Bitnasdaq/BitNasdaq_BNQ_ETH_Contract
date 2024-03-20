@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.22;
+pragma solidity 0.8.22;
 
 
 contract BNQ {
@@ -244,19 +244,7 @@ function _transfer(address from, address to, uint256 amount) internal {
      * - `account` cannot be the zero address.
      * - `account` must have at least `amount` tokens.
      */
-    function _burn(address account, uint256 amount) internal {
-        require(account != address(0), "burn from the zero address");
-
-        uint256 accountBalance = _balances[account];
-        require(accountBalance >= amount, "burn amount exceeds balance");
-        unchecked {
-            _balances[account] = accountBalance - amount;
-            // Overflow not possible: amount <= accountBalance <= totalSupply.
-            _totalSupply -= amount;
-        }
-
-        emit Transfer(account, address(0), amount);
-    }
+    
 
     /**
      * @dev Sets `amount` as the allowance of `spender` over the `owner` s tokens.
